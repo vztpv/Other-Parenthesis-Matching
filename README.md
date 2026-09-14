@@ -52,12 +52,9 @@ Pos* solve_other(const char* str, int64_t n) {
 		}
 		else if (str[i] == ')' && now < 0) {
 			const int64_t before = -now - 1;
-
 			const int64_t next_now = mate[before];
-
 			mate[before] = i + 1 + 1;
 			mate[i + 1] = before + 1;
-
 			now = next_now;
 		}
 	}
