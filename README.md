@@ -1,5 +1,7 @@
 # Other-Parenthesis-Matching
-```c++ // Default?
+
+# General??
+```c++ 
 Pos* solve(const char* str, int64_t n) {
 	Pos* vec = g_vecPoolSerial.acquire(n); // memory? pool!
 
@@ -22,9 +24,8 @@ Pos* solve(const char* str, int64_t n) {
 	return vec; // 주의: 이 포인터는 풀 소유이므로 free() 하지 말 것
 }
 ```
+# My Own?
 ```c++
-// my own?
-
 Pos* solve_other(const char* str, int64_t n) {
 	Pos* mate = g_vecPoolSerial2.acquire(n);
 
