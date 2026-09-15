@@ -26,8 +26,7 @@ Pos* solve(const char* str, int64_t n) {
 ```c++
 Pos* solve_other(const char* str, int64_t n) {
 	Pos* mate = g_vecPoolSerial2.acquire(n);
-	std::vector<Pos> _stack; _stack.reserve(n / 2);
-	int64_t now = -1;
+	int64_t now = 0;
 
 	for (int64_t i = 0; i < n; i += 2) {
 		mate[i] = i + 2;
