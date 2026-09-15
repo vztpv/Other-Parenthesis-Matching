@@ -22,21 +22,21 @@ Pos* solve(const char* str, int64_t n) {
 	return vec; // 주의: 이 포인터는 풀 소유이므로 free() 하지 말 것
 }
 ```
-# My Own? (use -1)
+# My Own? 
 ```c++
 Pos* solve_other(const char* str, int64_t n) {
 	Pos* mate = g_vecPoolSerial2.acquire(n);
 	int64_t now = 0;
 
 	for (int64_t i = 0; i < n; i += 2) {
-		mate[i] = i + 2;
-		mate[i + 1] = i + 1;
+		mate[i] = i + 1;
+		mate[i + 1] = i;
 
 		if (str[i] == ')') { // ...) ( ) ( -> ...) ) ) (
 			const int64_t before = -now - 1;
 			const int64_t next_now = mate[before];
-			mate[before] = i + 1;
-			mate[i] = before + 1;
+			mate[before] = i;
+			mate[i] = before;
 			now = next_now;
 		}
 
@@ -53,8 +53,8 @@ Pos* solve_other(const char* str, int64_t n) {
 		else if (str[i] == ')' && now < 0) {
 			const int64_t before = -now - 1;
 			const int64_t next_now = mate[before];
-			mate[before] = i + 1 + 1;
-			mate[i + 1] = before + 1;
+			mate[before] = i + 1;
+			mate[i + 1] = before;
 			now = next_now;
 		}
 	}
